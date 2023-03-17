@@ -1,0 +1,34 @@
+$w_device: '$(window).width()/100';
+
+/* Адаптив */
+$mobile: 320px;
+$tablet: 768px;
+$desktop: 1480px;
+
+$error: #E7717D;
+$success: #A2E0B2;
+
+/* Шрифты */
+$fontMainRegular: "Ubuntu-Regular", sans-serif;
+$fontMainBold: "Ubuntu-Bold", sans-serif;
+$fontMainMedium: "Ubuntu-Medium", sans-serif;
+
+/* Основные цвета */
+$bodyBackground: #ffffff;
+$textMainColor: #656565;
+$titleMainColor: #232323;
+
+
+$btnBgColor: #659DBD;
+$btnBgColorHover: #5B8DAA;
+$btnTextColor: #ffffff;
+
+$formPlaceholder: #a7a7a7;
+$formText: #232323;
+$formError: $error;
+
+$formBorderDefault: #EAEAEA;
+$formBorderHover: #659DBD;
+$formBorderFocus: #659DBD;
+$formBorderSuccess: $success;
+$formBorderError: $error;

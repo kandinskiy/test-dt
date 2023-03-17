@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Тестовое задание</title>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <header class="header">
+    <picture>
+      <source media="(max-width: 767px)" srcset="/images/header-mobile.jpg 1x">
+      <img src="/images/header-desktop.jpg" alt="" class="header__img">
+    </picture>
+  </header>
+
+  <section class="section">
+
+    <div class="about-city">
+      <div class="about-city__name">
+        <h1 class="about-city__h1">Walking in Old Tallinn</h1>
+        <div class="about-city__btn">
+          <a href="" class="button popup-open" data-popup="popup-feedback">Feedback</a>
+        </div>
+      </div>
+      <div class="about-city__text">
+        <p>
+          Welcome to Old Tallinn, the heart of the Estonian capital!<br>
+          The history of the settlement once began from here, and today it is one of the best preserved medieval cities in Europe.
+        </p>
+        <p>
+          I will take you through the streets and doorways and show you where they traded, what they ate, what they sued about and what our Estonian ancestors aspired to.
+        </p>
+        <p>
+          You will visit the oldest pharmacy, get acquainted with the royal privileges, see firsthand a real "gingerbread" house, look into an old tavern, walk along the widest and longest streets of the city and even find out that Tallinn is a lame city!
+        </p>
+        <p>
+          And you will also find beautiful and interesting souvenirs, of course!
+        </p>
+      </div>
+
+      <div class="about-city__pics about-carousel" id="carousel-about">
+        <div class="about-carousel__wrap swiper-wrapper">
+          <div class="about-carousel__item swiper-slide">
+            <a href="/" class="about-carousel__link">
+              <img src="/picture/tallin1.jpg" class="about-carousel__img">
+            </a>
+          </div>
+
+          <div class="about-carousel__item swiper-slide">
+            <a href="/" class="about-carousel__link">
+              <img src="/picture/tallin2.jpg" class="about-carousel__img">
+            </a>
+          </div>
+
+          <div class="about-carousel__item swiper-slide">
+            <a href="/" class="about-carousel__link">
+              <img src="/picture/tallin3.jpg" class="about-carousel__img">
+            </a>
+          </div>
+
+          <div class="about-carousel__item swiper-slide">
+            <a href="/" class="about-carousel__link">
+              <img src="/picture/tallin4.jpg" class="about-carousel__img">
+            </a>
+          </div>
+
+          <div class="about-carousel__item swiper-slide">
+            <a href="/" class="about-carousel__link">
+              <img src="/picture/tallin2.jpg" class="about-carousel__img">
+            </a>
+          </div>
+
+          <div class="about-carousel__item swiper-slide">
+            <a href="/" class="about-carousel__link">
+              <img src="/picture/tallin3.jpg" class="about-carousel__img">
+            </a>
+          </div>
+
+          <div class="about-carousel__item swiper-slide">
+            <a href="/" class="about-carousel__link">
+              <img src="/picture/tallin4.jpg" class="about-carousel__img">
+            </a>
+          </div>
+        </div>
+        <div class="about-carousel__arrow">
+          <div class="about-carousel__prev"></div>
+          <div class="about-carousel__next"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tours">
+      <div class="tours__name">Other tours</div>
+      <div class="tours__carousel tours-carousel" id="carousel-tours">
+        <div class="tours__list swiper-wrapper">
+          <a href="" class="tours-item swiper-slide" title="St. Isaac's Cathedral in St. Petersburg">
+            <div class="tours-item__img">
+              <img src="/picture/tours1.jpg" alt="St. Isaac's Cathedral in St. Petersburg" class="tours-item__pic">
+              <div class="tours-item__favourite favourite favourite_active" title="Удалить из избранного"></div>
+            </div>
+            <div class="tours-item__name">
+              St. Isaac's Cathedral in St. Petersburg
+            </div>
+            <div class="tours-item__text">
+              One of the highest domed structures in the world.
+            </div>
+          </a>
+
+          <a href="" class="tours-item swiper-slide" title="The Bridge of Peace, Tbilisi">
+            <div class="tours-item__img">
+              <img src="/picture/tours2.jpg" alt="The Bridge of Peace, Tbilisi" class="tours-item__pic">
+              <div class="tours-item__favourite favourite" title="Добавить в избранное"></div>
+            </div>
+            <div class="tours-item__name">
+              The Bridge of Peace, Tbilisi
+            </div>
+            <div class="tours-item__text">
+              Arc-shaped pedestrian bridge made of glass and steel.
+            </div>
+          </a>
+
+          <a href="" class="tours-item swiper-slide" title="El Caminito del Rey, Argentina">
+            <div class="tours-item__img">
+              <img src="/picture/tours3.jpg" alt="El Caminito del Rey, Argentina" class="tours-item__pic">
+              <div class="tours-item__favourite favourite" title="Добавить в избранное"></div>
+            </div>
+            <div class="tours-item__name">
+              El Caminito del Rey, Argentina
+            </div>
+            <div class="tours-item__text">
+              Tango, Open-air Museum, Painting, Art and History.
+            </div>
+          </a>
+        </div>
+        <div class="tours-carousel__arrow">
+          <div class="tours-carousel__prev"></div>
+          <div class="tours-carousel__next"></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</div>
+
+
+<div id="popup" class="popup popup_hide">
+  <div class="popup__body">
+    <div class="popup__close"></div>
+    <div class="popup__content"></div>
+  </div>
+</div>
+
+
+<div id="popup-feedback" class="popup-wrapper">
+  <div class="feedback">
+    <div class="feedback__name">
+      Feedback
+    </div>
+
+    <form name="feedback">
+      <div class="feedback__form">
+
+        <div class="feedback__columns">
+          <div class="feedback__elem feedback__elem_half form-element">
+            <div class="form-element__name">
+              Your name
+            </div>
+            <div class="form-element__field">
+              <input name="feedback-name" value="" placeholder="Placeholder" class="form-input">
+            </div>
+          </div>
+          <div class="feedback__elem feedback__elem_half form-element">
+            <div class="form-element__name">
+              Email address
+            </div>
+            <div class="form-element__field">
+              <input name="feedback-email" value="" placeholder="Placeholder" class="form-input">
+            </div>
+          </div>
+          <div class="feedback__elem feedback__elem_half form-element">
+            <div class="form-element__name">
+              Your phone
+            </div>
+            <div class="form-element__field">
+              <input name="feedback-phone" value="" placeholder="Placeholder" class="form-input">
+            </div>
+          </div>
+          <div class="feedback__elem feedback__elem_half form-element">
+            <div class="form-element__name">
+              Сhoose a trip
+            </div>
+            <div class="form-element__field">
+              <select name="feedback-trip" class="form-select">
+                <option value="">Сhoose</option>
+                <option value="1">Walking in Old Tallinn</option>
+                <option value="2">St. Isaac's Cathedral</option>
+                <option value="3">The Bridge of Peace</option>
+                <option value="4">El Caminito del Rey</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="feedback__line chips">
+          <div class="chips__item">
+            <input type="radio" name="chip" value="1" id="chip1" title="Reviews and suggestions" checked class="chips__input">
+            <label for="chip1" class="chips__label">Reviews and suggestions</label>
+          </div>
+
+          <div class="chips__item">
+            <input type="radio" name="chip" value="2" id="chip2" title="Question about content" class="chips__input">
+            <label for="chip2" class="chips__label">Question about content</label>
+          </div>
+
+          <div class="chips__item">
+            <input type="radio" name="chip" value="3" id="chip3" title="Complaints" class="chips__input">
+            <label for="chip3" class="chips__label">Complaints</label>
+          </div>
+
+          <div class="chips__item">
+            <input type="radio" name="chip" value="4" id="chip4" title="Other" class="chips__input">
+            <label for="chip4" class="chips__label">Other</label>
+          </div>
+        </div>
+
+        <div class="feedback__line form-element">
+          <div class="form-element__name">
+            Describe your question
+          </div>
+          <div class="form-element__field">
+            <textarea name="feedback-question" placeholder="Placeholder" class="feedback__textarea form-textarea form-textarea_noresize"></textarea>
+          </div>
+        </div>
+
+        <div class="feedback__footer">
+          <label for="consent" class="feedback__check form-checkbox">
+            <input type="checkbox" name="feedback-consent" title="" id="consent" class="form-checkbox__input">
+            <span class="form-checkbox__visual"></span>
+            <span class="form-checkbox__label">Даю согласие на обработку</span>
+          </label>
+
+          <div class="feedback__btn">
+            <button type="submit" class="button">Send</button>
+          </div>
+
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+</div>
+
+
+<script src="js/swiper-bundle.min.js"></script>
+
+</body>
+</html>

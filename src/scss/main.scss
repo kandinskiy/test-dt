@@ -1,0 +1,1060 @@
+@import "utils/normalize.scss";
+@import 'utils/libs';
+@import 'utils/vars';
+@import 'utils/mixins';
+@import 'utils/fonts';
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  position: relative;
+  background: $bodyBackground;
+  font-family: $fontMainRegular;
+  color: $textMainColor;
+}
+
+.body-hidden {
+  overflow: hidden;
+}
+
+p {
+  font: 14px/22px $fontMainRegular;
+  color: $textMainColor;
+
+  @include media('min', $tablet) {
+    font: #{sizeDesktop(18)}/135% $fontMainRegular;
+  }
+
+  @include media('min', $desktop) {
+    font-size: 18px;
+  }
+
+  & + & {
+    margin-top: 16px;
+
+    @include media('min', $tablet) {
+      margin-top: sizeDesktop(24);
+    }
+
+    @include media('min', $desktop) {
+      margin-top: 24px;
+    }
+  }
+}
+
+::-webkit-input-placeholder {
+  color: $formPlaceholder;
+}
+:-ms-input-placeholder {
+  color: $formPlaceholder;
+}
+::placeholder {
+  color: $formPlaceholder;
+}
+
+.form-input, .form-textarea {
+  display: block;
+  @include size(100%, 64px);
+  padding: 0 24px;
+  border: 1px solid $formBorderDefault;
+  font: 14px/157% $fontMainRegular;
+  color: $formText;
+
+  @include media('min', $tablet) {
+    @include size(100%, sizeDesktop(64));
+    padding: 0 sizeDesktop(24);
+    font: #{sizeDesktop(16)}/137% $fontMainRegular;
+  }
+
+  @include media('min', $desktop) {
+    height: 64px;
+    padding: 0 24px;
+    font-size: 16px;
+  }
+
+  &:hover {
+    border-color: $formBorderHover;
+  }
+
+  &:focus {
+    border-color: $formBorderFocus;
+  }
+}
+
+.form-textarea {
+  padding: 21px 24px;
+
+  @include media('min', $tablet) {
+    padding: sizeDesktop(21) sizeDesktop(24);
+  }
+
+  @include media('min', $desktop) {
+    padding: 21px 24px;
+  }
+
+  &_noresize {
+    resize: none;
+  }
+}
+
+.form-select {
+  display: block;
+  width: 100%;
+  height: 64px;
+  padding: 0 24px;
+  border: 1px solid $formBorderDefault;
+  font: 14px/157% $fontMainRegular;
+  color: $formText;
+
+  @include media('min', $tablet) {
+    height: sizeDesktop(64);
+    padding: 0 sizeDesktop(24);
+    font: #{sizeDesktop(16)}/137% $fontMainRegular;
+  }
+
+  @include media('min', $desktop) {
+    height: 64px;
+    padding: 0 24px;
+    font-size: 16px;
+  }
+
+  &:hover {
+    border-color: $formBorderHover;
+  }
+
+  &:focus {
+    border-color: $formBorderFocus;
+    outline: none;
+  }
+
+  option {
+    overflow: hidden;
+    display: block;
+    height: 42px;
+    font: 14px/157% $fontMainRegular;
+    color: $formText;
+    white-space: nowrap;
+
+    @include media('min', $tablet) {
+      height: sizeDesktop(42);
+      font: #{sizeDesktop(16)}/137% $fontMainRegular;
+    }
+
+    @include media('min', $desktop) {
+      height: 42px;
+      font-size: 16px;
+
+    }
+  }
+}
+
+.form-checkbox {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+
+  &__visual {
+    position: relative;
+    @include size(32px,32px);
+    border: 1px solid $formBorderDefault;
+    background: #ffffff;
+    cursor: pointer;
+
+    @include media('min', $tablet) {
+      @include size(sizeDesktop(32),sizeDesktop(32));
+    }
+
+    @include media('min', $desktop) {
+      @include size(32px,32px);
+    }
+  }
+
+  &__input:checked + &__visual {
+    border-color: $formBorderFocus;
+    background: url('/images/mark-active.svg') center center $formBorderFocus no-repeat;
+    background-size: 12px 16px;
+
+    @include media('min', $tablet) {
+      background-size: sizeDesktop(12) sizeDesktop(16);
+    }
+
+    @include media('min', $desktop) {
+      background-size: 12px 16px;
+    }
+  }
+
+  &__input {
+    display: block;
+    position: absolute;
+    top: -50px;
+    @include size(40px,40px);
+
+    @include media('min', $tablet) {
+      top: sizeDesktop(-50);
+      @include size(sizeDesktop(40),sizeDesktop(40));
+    }
+
+    @include media('min', $desktop) {
+      top: -50px;
+      @include size(40px,40px);
+    }
+  }
+
+  &__label {
+    display: block;
+    margin-left: 16px;
+    font: 14px/157% $fontMainRegular;
+    color: $textMainColor;
+    cursor: pointer;
+
+    @include media('min', $tablet) {
+      margin-left: sizeDesktop(16);
+      font: #{sizeDesktop(16)}/137% $fontMainRegular;
+    }
+
+    @include media('min', $desktop) {
+      margin-left: 16px;
+      font-size: 16px;
+    }
+  }
+}
+
+.chips {
+  display: flex;
+  flex-direction: column;
+
+  @include media('min', $tablet) {
+    flex-direction: row;
+  }
+
+  &__item {
+    position: relative;
+    overflow: hidden;
+
+    & + & {
+      margin-top: 24px;
+
+      @include media('min', $tablet) {
+        margin-top: 0;
+        margin-left: sizeDesktop(32);
+      }
+
+      @include media('min', $desktop) {
+        margin-left: 32px;
+      }
+    }
+  }
+
+  &__input {
+    position: absolute;
+    top: -50px;
+    @include size(40px,40px);
+
+    @include media('min', $tablet) {
+      top: sizeDesktop(-50);
+      @include size(sizeDesktop(40),sizeDesktop(40));
+    }
+
+    @include media('min', $desktop) {
+      top: -50px;
+      @include size(40px,40px);
+    }
+  }
+
+  &__label {
+    display: inline-block;
+    padding: 21px 56px;
+    border: 1px solid $formBorderDefault;
+    font: 14px/157% $fontMainRegular;
+    color: $textMainColor;
+    cursor: pointer;
+
+    @include media('min', $tablet) {
+      display: block;
+      padding: sizeDesktop(21) sizeDesktop(62);
+      font: #{sizeDesktop(16)}/137% $fontMainRegular;
+    }
+
+    @include media('min', $desktop) {
+      padding: 21px 62px;
+      font-size: 16px;
+    }
+
+    &:hover {
+      border-color: $formBorderHover;
+    }
+  }
+
+  &__input:checked + &__label {
+    border-color: $formBorderFocus;
+    background: $formBorderFocus;
+    color: #ffffff;
+  }
+}
+
+.button {
+  display: block;
+  border: none;
+  width: 100%;
+  padding: 21px;
+  text-align: center;
+  background: $btnBgColor;
+  font: 16px/1 $fontMainRegular;
+  color: $btnTextColor;
+  text-decoration: none;
+  cursor: pointer;
+
+  @include media('min', $tablet) {
+    display: inline-block;
+    padding: sizeDesktop(21) sizeDesktop(142);
+    font-size: sizeDesktop(16);
+  }
+
+  @include media('min', $desktop) {
+    padding: 21px 142px;
+    font-size: 16px;
+  }
+
+  &:hover {
+    background: $btnBgColorHover;
+    text-decoration: none;
+  }
+}
+
+.wrapper {
+  overflow: hidden;
+  padding: 0 0 64px;
+  width: 100%;
+
+  @include media('min', $tablet) {
+    margin: 0 auto;
+    padding: 0 0 sizeDesktop(100);
+  }
+
+  @include media('min', $desktop) {
+    max-width: 1960px;
+    padding: 0 0 100px;
+  }
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  margin-bottom: 40px;
+
+  @include media('min', $tablet) {
+    margin: 0 auto sizeDesktop(64);
+    height: auto;
+  }
+
+  @include media('min', $desktop) {
+    margin: 0 auto 64px;
+    height: 480px;
+  }
+
+  &__img {
+    @include size(100%, 100%);
+    vertical-align: bottom;
+    object-fit: cover;
+    object-position: center top;
+  }
+}
+
+.section {
+  position: relative;
+  margin: 0 20px;
+  width: auto;
+
+  @include media('min', $tablet) {
+    width: sizeDesktop(1184);
+    margin: 0 auto;
+  }
+
+  @include media('min', $desktop) {
+    max-width: 1184px;
+  }
+}
+
+.about-city {
+  position: relative;
+
+  &__name {
+    display: flex;
+    flex-direction: column;
+
+    @include media('min', $tablet) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__h1 {
+    display: block;
+    font-family: $fontMainMedium;
+    font-size: 24px;
+    line-height: 1.2;
+    color: $titleMainColor;
+
+    @include media('min', $tablet) {
+      font-size: sizeDesktop(40);
+    }
+
+    @include media('min', $desktop) {
+      font-size: 40px;
+    }
+  }
+
+  &__btn {
+    @include media('max', $tablet) {
+      margin: 40px 0 0;
+    }
+  }
+
+  &__text {
+    margin: 40px 0 0;
+
+    @include media('min', $tablet) {
+      width: sizeDesktop(586);
+      margin: sizeDesktop(73) 0 0;
+    }
+
+    @include media('min', $desktop) {
+      width: 586px;
+      margin: 73px 0 0;
+    }
+  }
+
+  &__pics {
+    margin: 40px -20px 0;
+
+    @include media('min', $tablet) {
+      width: sizeDesktop(1440);
+      margin: sizeDesktop(64) sizeDesktop(-128) 0;
+    }
+
+    @include media('min', $desktop) {
+      width: 1440px;
+      margin: 64px -128px 0;
+    }
+  }
+}
+
+.about-carousel {
+  position: relative;
+  overflow: hidden;
+
+  &__wrap {
+    position: relative;
+    margin: 0;
+    height: 100%;
+  }
+
+  &__item {
+    @include size(266px, 284px);
+
+    @include media('min', $tablet) {
+      @include size(sizeDesktop(313), sizeDesktop(336));
+    }
+
+    @include media('min', $desktop) {
+      @include size(313px, 336px);
+    }
+
+    &:first-child {
+      margin-left: 20px;
+
+      @include media('min', $tablet) {
+        margin-left: sizeDesktop(128);
+      }
+
+      @include media('min', $desktop) {
+        margin-left: 128px;
+      }
+    }
+
+    &:last-child {
+      margin-right: 20px;
+
+      @include media('min', $tablet) {
+        margin-right: sizeDesktop(128);
+      }
+
+      @include media('min', $desktop) {
+        margin-right: 128px;
+      }
+    }
+
+    & + & {
+      margin-left: 24px;
+
+      @include media('min', $tablet) {
+        margin-left: sizeDesktop(32);
+      }
+
+      @include media('min', $desktop) {
+        margin-left: 32px;
+      }
+    }
+  }
+
+  &__img {
+    vertical-align: bottom;
+    @include size(266px, 284px);
+
+    @include media('min', $tablet) {
+      @include size(sizeDesktop(313), sizeDesktop(336));
+    }
+
+    @include media('min', $desktop) {
+      @include size(313px, 336px);
+    }
+  }
+
+  &__link, &__link:hover {
+    text-decoration: none;
+  }
+
+  &__arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 24px 0 0;
+
+    @include media('min', $tablet) {
+      margin: sizeDesktop(32) 0 0;
+    }
+
+    @include media('min', $desktop) {
+      margin: 32px 0 0;
+    }
+  }
+
+  &__prev, &__next {
+    @include size(40px, 40px);
+    background: url('/images/arrow_default.svg') no-repeat;
+    background-size: 100% 100%;
+    transition: .2s background linear;
+    cursor: pointer;
+
+    @include media('min', $tablet) {
+      @include size(sizeDesktop(40), sizeDesktop(40));
+    }
+
+    @include media('min', $desktop) {
+      @include size(40px, 40px);
+    }
+
+    & + & {
+      margin-left: 32px;
+
+      @include media('min', $tablet) {
+        margin-left: sizeDesktop(32);
+      }
+
+      @include media('min', $desktop) {
+        margin-left: 32px;
+      }
+    }
+
+    &[aria-disabled="true"]{
+      background: url('/images/arrow_disable.svg') no-repeat;
+      background-size: 100% 100%;
+      cursor: default;
+    }
+
+    &:hover:not([aria-disabled="true"]) {
+      background: url('/images/arrow_hover.svg') no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+
+  &__prev {
+    transform: rotate(180deg);
+  }
+}
+
+.tours {
+  margin: 64px 0 0;
+
+  @include media('min', $tablet) {
+    margin: sizeDesktop(64) 0 0;
+  }
+
+  @include media('min', $desktop) {
+    margin: 64px 0 0;
+  }
+
+  &__name {
+    font: 24px/130% $fontMainMedium;
+    color: $titleMainColor;
+
+    @include media('min', $tablet) {
+      font-size: sizeDesktop(40);
+    }
+
+    @include media('min', $desktop) {
+      font-size: 40px;
+    }
+  }
+
+  &__carousel {
+    position: relative;
+    overflow: hidden;
+    margin: 40px -20px 0;
+
+    @include media('min', $tablet) {
+      margin: sizeDesktop(64) 0 0;
+    }
+
+    @include media('min', $desktop) {
+      margin: 64px 0 0;
+    }
+  }
+
+  &__list {
+    @include media('min', $tablet) {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.tours-carousel {
+
+  &__arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 24px 0 0;
+
+    @include media('min', $tablet) {
+      display: none;
+    }
+  }
+
+  &__prev, &__next {
+    @include size(40px, 40px);
+    background: url('/images/arrow_default.svg') no-repeat;
+    background-size: 100% 100%;
+    transition: .2s background linear;
+    cursor: pointer;
+
+    & + & {
+      margin-left: 32px;
+    }
+
+    &[aria-disabled="true"]{
+      background: url('/images/arrow_disable.svg') no-repeat;
+      background-size: 100% 100%;
+      cursor: default;
+    }
+
+    &:hover:not([aria-disabled="true"]) {
+      background: url('/images/arrow_hover.svg') no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+
+  &__prev {
+    transform: rotate(180deg);
+  }
+}
+
+.tours-item {
+  display: block;
+  width: 266px;
+  text-decoration: none;
+  color: initial;
+
+  &:first-child {
+    margin-left: 20px;
+
+    @include media('min', $tablet) {
+      margin: 0;
+    }
+  }
+
+  &:last-child {
+    margin-right: 20px;
+
+    @include media('min', $tablet) {
+      margin: 0;
+    }
+  }
+
+  @include media('min', $tablet) {
+    width: sizeDesktop(373);
+    padding: 0 sizeDesktop(30) sizeDesktop(40);
+  }
+
+  @include media('min', $desktop) {
+    width: 373px;
+    padding: 0 30px 40px;
+  }
+
+  & + & {
+    margin-left: 24px;
+
+    @include media('min', $tablet) {
+      margin-left: 0;
+    }
+  }
+
+  &__img {
+    display: block;
+    position: relative;
+    @include size(266px, 284px);
+
+    @include media('min', $tablet) {
+      margin-top: sizeDesktop(30);
+      @include size(sizeDesktop(313), sizeDesktop(336));
+      transition: .3s all linear;
+    }
+
+    @include media('min', $desktop) {
+      margin-top: 30px;
+      @include size(313px, 336px);
+    }
+  }
+
+  &:hover &__img {
+    @include media('min', $tablet) {
+      @include size(sizeDesktop(373), sizeDesktop(366));
+      margin: 0 sizeDesktop(-30) 0;
+    }
+
+    @include media('min', $desktop) {
+      @include size(373px, 366px);
+      margin: 0 -30px 0;
+    }
+  }
+
+  &__pic {
+    @include size(100%, 100%);
+    vertical-align: bottom;
+    object-fit: cover
+  }
+
+  &__name {
+    margin-top: 24px;
+    font: 20px/140% $fontMainMedium;
+
+    @include media('min', $tablet) {
+      margin-top: sizeDesktop(24);
+      font: #{sizeDesktop(32)}/118% $fontMainMedium;
+    }
+
+    @include media('min', $desktop) {
+      margin-top: 24px;
+      font-size: 32px;
+    }
+  }
+
+  &:hover &__name {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  &__text {
+    margin-top: 16px;
+    font: 14px/157% $fontMainRegular;
+    color: $textMainColor;
+
+    @include media('min', $tablet) {
+      margin-top: sizeDesktop(24);
+      font: #{sizeDesktop(16)}/137% $fontMainRegular;
+    }
+
+    @include media('min', $desktop) {
+      margin-top: 24px;
+      font-size: 16px;
+    }
+  }
+
+  &__favourite {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+
+    @include media('min', $tablet) {
+      top: sizeDesktop(16);
+      right: sizeDesktop(16);
+    }
+
+    @include media('min', $desktop) {
+      top: 16px;
+      right: 16px;
+    }
+  }
+}
+
+.favourite {
+  @include size(40px, 40px);
+  background: url('/images/favourite_default.svg') no-repeat;
+  background-size: 100% 100%;
+  cursor: pointer;
+  transition: .2s background linear;
+
+  @include media('min', $tablet) {
+    @include size(sizeDesktop(40), sizeDesktop(40));
+  }
+
+  @include media('min', $desktop) {
+    @include size(40px, 40px);
+  }
+
+  &:hover:not(&_active) {
+    background: url('/images/favourite_hover.svg') no-repeat;
+    background-size: 100% 100%;
+  }
+
+  &_active {
+    background: url('/images/favourite_active.svg') no-repeat;
+    background-size: 100% 100%;
+  }
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: #232323;
+    opacity: .4;
+  }
+
+  &_hide {
+    display: none;
+  }
+
+  &__body {
+    position: relative;
+    z-index: 2;
+    background: #ffffff;
+    width: 100%;
+    max-height: 100%;
+    padding: 46px 20px;
+    overflow-y: auto;
+
+    @include media('min', $tablet) {
+      width: sizeDesktop(1184);
+      padding: sizeDesktop(64) sizeDesktop(40);
+    }
+
+    @include media('min', $desktop) {
+      width: 1184px;
+      padding: 64px 40px;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    z-index: 2;
+    @include size(40px,40px);
+
+    background: url('/images/close_disable.svg') no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+
+    @include media('min', $tablet) {
+      @include size(sizeDesktop(40),sizeDesktop(40));
+    }
+
+    @include media('min', $desktop) {
+      top: 40px;
+      right: 40px;
+      @include size(40px,40px);
+    }
+
+    &:hover {
+      background: url('/images/close_hover.svg') no-repeat;
+      background-size: 100% 100%;
+    }
+
+    &:active {
+      background: url('/images/close_active.svg') no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+  }
+
+  &-wrapper {
+    display: none;
+  }
+}
+
+.feedback {
+  position: relative;
+
+  &__name {
+    font: 24px/118% $fontMainRegular;
+    color: $titleMainColor;
+
+    @include media('min', $tablet) {
+      font-size: sizeDesktop(32);
+    }
+
+    @include media('min', $desktop) {
+      font-size: 32px;
+      line-height: 38px;
+    }
+  }
+
+  &__form {
+    margin: sizeDesktop(40) 0 0;
+
+    @include media('min', $desktop) {
+      margin: 40px 0 0;
+    }
+  }
+
+  &__columns {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    @include media('min', $tablet) {
+      flex-direction: row;
+    }
+  }
+
+  &__elem {
+    margin-top: 24px;
+
+    @include media('min', $tablet) {
+      margin-top: sizeDesktop(24);
+    }
+
+    @include media('min', $desktop) {
+      margin-top: 24px;
+    }
+
+    &_half {
+      width: 100%;
+
+      @include media('min', $tablet) {
+        width: sizeDesktop(536);
+      }
+
+      @include media('min', $desktop) {
+        width: 536px;
+      }
+    }
+  }
+
+  &__textarea {
+    height: 128px;
+
+    @include media('min', $tablet) {
+      height: sizeDesktop(166);
+    }
+
+    @include media('min', $desktop) {
+      height: 166px;
+    }
+  }
+
+  &__line {
+    margin-top: 40px;
+
+    @include media('min', $tablet) {
+      margin-top: sizeDesktop(64);
+    }
+
+    @include media('min', $desktop) {
+      margin-top: 64px;
+    }
+  }
+
+  &__footer {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+
+    @include media('min', $tablet) {
+      margin-top: sizeDesktop(64);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @include media('min', $desktop) {
+      margin-top: 64px;
+    }
+  }
+
+  &__btn {
+    margin-top: 40px;
+
+    @include media('min', $tablet) {
+      margin-top: 0;
+    }
+  }
+}
+
+.form-element {
+
+  &__name {
+    font: 14px/157% $fontMainRegular;
+    color: $textMainColor;
+
+    @include media('min', $tablet) {
+      font: #{sizeDesktop(16)}/137% $fontMainRegular;
+    }
+
+    @include media('min', $desktop) {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+
+  &__field {
+    position: relative;
+    margin: 16px 0 0;
+
+    @include media('min', $tablet) {
+      margin: sizeDesktop(16) 0 0;
+    }
+
+    @include media('min', $desktop) {
+      margin: 16px 0 0;
+    }
+  }
+
+}
