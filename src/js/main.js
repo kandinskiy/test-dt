@@ -17,8 +17,8 @@ new Swiper("#carousel-about", {
     el: 0
   },
   navigation: {
-    prevEl: ".about-carousel__prev",
-    nextEl: ".about-carousel__next",
+    prevEl: ".carousel-about-prev",
+    nextEl: ".carousel-about-next",
   },
 });
 
@@ -41,8 +41,8 @@ new Swiper("#carousel-tours", {
     el: 0
   },
   navigation: {
-    prevEl: ".tours-carousel__prev",
-    nextEl: ".tours-carousel__next",
+    prevEl: ".carousel-tours-prev",
+    nextEl: ".carousel-tours-next",
   },
 });
 

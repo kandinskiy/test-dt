@@ -25,6 +25,12 @@ body {
   overflow: hidden;
 }
 
+.only-mobile {
+  @include media('min', $tablet) {
+    display: none;
+  }
+}
+
 p {
   font: 14px/22px $fontMainRegular;
   color: $textMainColor;
@@ -526,10 +532,7 @@ p {
     text-decoration: none;
   }
 
-  &__arrow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  &__arrows {
     margin: 24px 0 0;
 
     @include media('min', $tablet) {
@@ -539,49 +542,6 @@ p {
     @include media('min', $desktop) {
       margin: 32px 0 0;
     }
-  }
-
-  &__prev, &__next {
-    @include size(40px, 40px);
-    background: url('/images/arrow_default.svg') no-repeat;
-    background-size: 100% 100%;
-    transition: .2s background linear;
-    cursor: pointer;
-
-    @include media('min', $tablet) {
-      @include size(sizeDesktop(40), sizeDesktop(40));
-    }
-
-    @include media('min', $desktop) {
-      @include size(40px, 40px);
-    }
-
-    & + & {
-      margin-left: 32px;
-
-      @include media('min', $tablet) {
-        margin-left: sizeDesktop(32);
-      }
-
-      @include media('min', $desktop) {
-        margin-left: 32px;
-      }
-    }
-
-    &[aria-disabled="true"]{
-      background: url('/images/arrow_disable.svg') no-repeat;
-      background-size: 100% 100%;
-      cursor: default;
-    }
-
-    &:hover:not([aria-disabled="true"]) {
-      background: url('/images/arrow_hover.svg') no-repeat;
-      background-size: 100% 100%;
-    }
-  }
-
-  &__prev {
-    transform: rotate(180deg);
   }
 }
 
@@ -610,8 +570,6 @@ p {
   }
 
   &__carousel {
-    position: relative;
-    overflow: hidden;
     margin: 40px -20px 0;
 
     @include media('min', $tablet) {
@@ -633,43 +591,11 @@ p {
 }
 
 .tours-carousel {
+  position: relative;
+  overflow: hidden;
 
-  &__arrow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  &__arrows {
     margin: 24px 0 0;
-
-    @include media('min', $tablet) {
-      display: none;
-    }
-  }
-
-  &__prev, &__next {
-    @include size(40px, 40px);
-    background: url('/images/arrow_default.svg') no-repeat;
-    background-size: 100% 100%;
-    transition: .2s background linear;
-    cursor: pointer;
-
-    & + & {
-      margin-left: 32px;
-    }
-
-    &[aria-disabled="true"]{
-      background: url('/images/arrow_disable.svg') no-repeat;
-      background-size: 100% 100%;
-      cursor: default;
-    }
-
-    &:hover:not([aria-disabled="true"]) {
-      background: url('/images/arrow_hover.svg') no-repeat;
-      background-size: 100% 100%;
-    }
-  }
-
-  &__prev {
-    transform: rotate(180deg);
   }
 }
 
@@ -1057,4 +983,37 @@ p {
     }
   }
 
+}
+
+.carousel-arrows {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__prev, &__next {
+    @include size(40px, 40px);
+    background: url('/images/arrow_default.svg') no-repeat;
+    background-size: 100% 100%;
+    transition: .2s background linear;
+    cursor: pointer;
+
+    & + & {
+      margin-left: 32px;
+    }
+
+    &[aria-disabled="true"]{
+      background: url('/images/arrow_disable.svg') no-repeat;
+      background-size: 100% 100%;
+      cursor: default;
+    }
+
+    &:hover:not([aria-disabled="true"]) {
+      background: url('/images/arrow_hover.svg') no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+
+  &__prev {
+    transform: rotate(180deg);
+  }
 }
