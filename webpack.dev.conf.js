@@ -9,7 +9,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       overlay: true,
     },
     port: 8081,
-    hot: true
+    hot: true,
   },
   devtool: 'inline-source-map',
   plugins: [
