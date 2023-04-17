@@ -1,13 +1,12 @@
 @import "utils/normalize.scss";
-@import 'utils/libs';
 @import 'utils/vars';
 @import 'utils/mixins';
 @import 'utils/fonts';
 
 body, html {
+  position: relative;
   margin: 0;
   padding: 0;
-  height: 100%;
 }
 
 html {
@@ -183,6 +182,10 @@ p {
     @include media('min', $desktop) {
       @include size(32px,32px);
     }
+  }
+
+  &:hover &__visual, &__input:focus + &__visual {
+    border: 1px solid #659DBD;
   }
 
   &__input:checked + &__visual {
@@ -837,10 +840,6 @@ p {
     position: relative;
     z-index: 1;
   }
-
-  &-wrapper {
-    display: none;
-  }
 }
 
 .feedback {
@@ -907,11 +906,11 @@ p {
     height: 128px;
 
     @include media('min', $tablet) {
-      height: sizeDesktop(166);
+      height: sizeDesktop(128);
     }
 
     @include media('min', $desktop) {
-      height: 166px;
+      height: 128px;
     }
   }
 

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Тестовое задание</title>
+  <script src="js/select.js"></script>
 </head>
 <body>
 
@@ -23,7 +24,7 @@
       <div class="about-city__name">
         <h1 class="about-city__h1">Walking in Old Tallinn</h1>
         <div class="about-city__btn">
-          <a href="" class="button popup-open" data-popup="popup-feedback">Feedback</a>
+          <a href="" class="button js-popup-open" data-popup="js-popup-feedback">Feedback</a>
         </div>
       </div>
       <div class="about-city__text">
@@ -148,113 +149,113 @@
 </div>
 
 
-<div id="popup" class="popup popup_hide">
+<div id="js-popup-feedback" class="popup popup_hide">
   <div class="popup__body">
-    <div class="popup__close"></div>
-    <div class="popup__content"></div>
-  </div>
-</div>
+    <div class="popup__close js-popup-close"></div>
+    <div class="popup__content">
 
-
-<div id="popup-feedback" class="popup-wrapper">
-  <div class="feedback">
-    <div class="feedback__name">
-      Feedback
-    </div>
-
-    <form name="feedback">
-      <div class="feedback__form">
-
-        <div class="feedback__columns">
-          <div class="feedback__elem feedback__elem_half form-element">
-            <div class="form-element__name">
-              Your name
-            </div>
-            <div class="form-element__field">
-              <input name="feedback-name" value="" placeholder="Placeholder" class="form-input">
-            </div>
-          </div>
-          <div class="feedback__elem feedback__elem_half form-element">
-            <div class="form-element__name">
-              Email address
-            </div>
-            <div class="form-element__field">
-              <input name="feedback-email" value="" placeholder="Placeholder" class="form-input">
-            </div>
-          </div>
-          <div class="feedback__elem feedback__elem_half form-element">
-            <div class="form-element__name">
-              Your phone
-            </div>
-            <div class="form-element__field">
-              <input name="feedback-phone" value="" placeholder="Placeholder" class="form-input">
-            </div>
-          </div>
-          <div class="feedback__elem feedback__elem_half form-element">
-            <div class="form-element__name">
-              Сhoose a trip
-            </div>
-            <div class="form-element__field">
-              <select name="feedback-trip" class="form-select">
-                <option value="">Сhoose</option>
-                <option value="1">Walking in Old Tallinn</option>
-                <option value="2">St. Isaac's Cathedral</option>
-                <option value="3">The Bridge of Peace</option>
-                <option value="4">El Caminito del Rey</option>
-              </select>
-            </div>
-          </div>
+      <div class="feedback">
+        <div class="feedback__name">
+          Feedback
         </div>
 
-        <div class="feedback__line chips">
-          <div class="chips__item">
-            <input type="radio" name="chip" value="1" id="chip1" title="Reviews and suggestions" checked class="chips__input">
-            <label for="chip1" class="chips__label">Reviews and suggestions</label>
+        <form name="feedback">
+          <div class="feedback__form">
+
+            <div class="feedback__columns">
+              <div class="feedback__elem feedback__elem_half form-element">
+                <div class="form-element__name">
+                  Your name
+                </div>
+                <div class="form-element__field">
+                  <input name="feedback-name" value="" placeholder="Placeholder" class="form-input">
+                </div>
+              </div>
+              <div class="feedback__elem feedback__elem_half form-element">
+                <div class="form-element__name">
+                  Email address
+                </div>
+                <div class="form-element__field">
+                  <input type="email" name="feedback-email" value="" placeholder="Placeholder" class="form-input">
+                </div>
+              </div>
+              <div class="feedback__elem feedback__elem_half form-element">
+                <div class="form-element__name">
+                  Your phone
+                </div>
+                <div class="form-element__field">
+                  <input type="tel" name="feedback-phone" value="" placeholder="Placeholder" class="form-input">
+                </div>
+              </div>
+              <div class="feedback__elem feedback__elem_half form-element">
+                <div class="form-element__name">
+                  Сhoose a trip
+                </div>
+                <div class="form-element__field">
+                  <select name="feedback-trip" title="" id="js-select" class="form-select">
+                    <option value="">Сhoose</option>
+                    <option value="Walking in Old Tallinn">Walking in Old Tallinn</option>
+                    <option value="St. Isaac's Cathedral">St. Isaac's Cathedral</option>
+                    <option value="The Bridge of Peace">The Bridge of Peace</option>
+                    <option value="El Caminito del Rey">El Caminito del Rey</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="feedback__line chips">
+              <div class="chips__item">
+                <input type="radio" name="chip" value="1" id="chip1" title="Reviews and suggestions" checked class="chips__input">
+                <label for="chip1" class="chips__label">Reviews and suggestions</label>
+              </div>
+
+              <div class="chips__item">
+                <input type="radio" name="chip" value="2" id="chip2" title="Question about content" class="chips__input">
+                <label for="chip2" class="chips__label">Question about content</label>
+              </div>
+
+              <div class="chips__item">
+                <input type="radio" name="chip" value="3" id="chip3" title="Complaints" class="chips__input">
+                <label for="chip3" class="chips__label">Complaints</label>
+              </div>
+
+              <div class="chips__item">
+                <input type="radio" name="chip" value="4" id="chip4" title="Other" class="chips__input">
+                <label for="chip4" class="chips__label">Other</label>
+              </div>
+            </div>
+
+            <div class="feedback__line form-element">
+              <div class="form-element__name">
+                Describe your question
+              </div>
+              <div class="form-element__field">
+                <textarea name="feedback-question" placeholder="Placeholder" class="feedback__textarea form-textarea form-textarea_noresize"></textarea>
+              </div>
+            </div>
+
+            <div class="feedback__footer">
+              <label for="consent" class="feedback__check form-checkbox">
+                <input type="checkbox" name="feedback-consent" title="" id="consent" class="form-checkbox__input">
+                <span class="form-checkbox__visual"></span>
+                <span class="form-checkbox__label">Даю согласие на обработку</span>
+              </label>
+
+              <div class="feedback__btn">
+                <button type="submit" class="button">Send</button>
+              </div>
+
+            </div>
+
           </div>
-
-          <div class="chips__item">
-            <input type="radio" name="chip" value="2" id="chip2" title="Question about content" class="chips__input">
-            <label for="chip2" class="chips__label">Question about content</label>
-          </div>
-
-          <div class="chips__item">
-            <input type="radio" name="chip" value="3" id="chip3" title="Complaints" class="chips__input">
-            <label for="chip3" class="chips__label">Complaints</label>
-          </div>
-
-          <div class="chips__item">
-            <input type="radio" name="chip" value="4" id="chip4" title="Other" class="chips__input">
-            <label for="chip4" class="chips__label">Other</label>
-          </div>
-        </div>
-
-        <div class="feedback__line form-element">
-          <div class="form-element__name">
-            Describe your question
-          </div>
-          <div class="form-element__field">
-            <textarea name="feedback-question" placeholder="Placeholder" class="feedback__textarea form-textarea form-textarea_noresize"></textarea>
-          </div>
-        </div>
-
-        <div class="feedback__footer">
-          <label for="consent" class="feedback__check form-checkbox">
-            <input type="checkbox" name="feedback-consent" title="" id="consent" class="form-checkbox__input">
-            <span class="form-checkbox__visual"></span>
-            <span class="form-checkbox__label">Даю согласие на обработку</span>
-          </label>
-
-          <div class="feedback__btn">
-            <button type="submit" class="button">Send</button>
-          </div>
-
-        </div>
-
+        </form>
       </div>
-    </form>
-  </div>
 
+    </div>
+  </div>
 </div>
+
+</svg>
 
 
 <script src="./js/swiper-bundle.min.js"></script>

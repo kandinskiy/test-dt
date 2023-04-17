@@ -1,12 +1,7 @@
-$w_device: '$(window).width()/100';
-
 /* Адаптив */
 $mobile: 320px;
 $tablet: 768px;
 $desktop: 1480px;
-
-$error: #E7717D;
-$success: #A2E0B2;
 
 /* Шрифты */
 $fontMainRegular: "Ubuntu-Regular", sans-serif;
@@ -14,6 +9,9 @@ $fontMainBold: "Ubuntu-Bold", sans-serif;
 $fontMainMedium: "Ubuntu-Medium", sans-serif;
 
 /* Основные цвета */
+$error: #E7717D;
+$success: #A2E0B2;
+
 $bodyBackground: #ffffff;
 $textMainColor: #656565;
 $titleMainColor: #232323;

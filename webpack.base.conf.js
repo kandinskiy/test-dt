@@ -15,63 +15,67 @@ module.exports = {
     paths: PATHS
   },
   cache: false,
-  entry: {
-    app: PATHS.src
-  },
+  entry: PATHS.src + 'index.js',
   output: {
-    filename: `js/[name].js`,
     path: PATHS.dist,
-    publicPath: './'
+    filename: 'js/[name].js',
+    clean: true,
   },
   performance: {
     hints: false
   },
   module: {
-    rules: [{
-      test: /\.js$/,
-      loader: 'babel-loader',
-      exclude: '/node_modules/'
-    }, {
-      test: /\.(css|scss)$/,
-      use: [
-        MiniCssExtractPlugin.loader,
-        {
-          loader: 'css-loader',
-          options: {
-            url: false,
-          }
-        }, {
-          loader: "postcss-loader",
-          options: {
-            postcssOptions: {
-              plugins: [
-                [
-                  "postcss-preset-env",
-                  {sourceMap: true}
-                ],
-              ],
-            },
-          },
-        }, {
-          loader: 'sass-loader'
-        }
-      ]
-    }, {
-      test: /\.(png|jpg|jpeg|gif|svg)$/,
-      use: [{
-        options: {
-          name: '[path][name].[ext]',
-          quality: 75
-        },
-        loader: 'file-loader',
-      }]
-    }, {
-      test: /\.(woff(2)?|ttf|eot)$/,
-      type: 'asset/resource',
-      generator: {
-        filename: `./css/fonts/[name][ext]`,
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: '/node_modules/'
       },
-    }]
+      {
+        test: /\.(css|scss)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              url: false,
+            }
+          }, {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    "postcss-preset-env",
+                    {sourceMap: true}
+                  ],
+                ],
+              },
+            },
+          }, {
+            loader: 'sass-loader'
+          }
+        ]
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        type: 'asset/resource',
+        use: [{
+          options: {
+            name: '[path][name].[ext]',
+            quality: 75
+          },
+          loader: 'file-loader',
+        }]
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: `./fonts/[name][ext]`,
+        },
+      },
+    ]
   },
   devServer: {
     static: {
@@ -87,6 +91,19 @@ module.exports = {
         test: /\.css$/,
       }),
     ],
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          name: "vendors",
+          test: '/node_modules/',
+          chunks: "all",
+          enforce: true
+        }
+      }
+    },
+    runtimeChunk: true,
+    usedExports: true,
+    concatenateModules: true,
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -98,17 +115,19 @@ module.exports = {
         {
           from: PATHS.src + 'static',
           to: PATHS.dist,
+          noErrorOnMissing: true
         },
         {
           from: PATHS.src + 'fonts',
-          to: PATHS.dist + 'css/fonts/',
+          to: PATHS.dist + 'css/fonts',
+          noErrorOnMissing: true
         }
       ],
     }),
     new HtmlWebpackPlugin({
-      hash: false,
+      inject: true,
       template: PATHS.src + 'index.html',
-      filename: 'index.html',
+      filename: './index.html',
     }),
   ],
 };

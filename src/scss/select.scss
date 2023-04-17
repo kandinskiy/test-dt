@@ -1,0 +1,115 @@
+@import 'utils/vars';
+@import 'utils/mixins';
+
+.js-select {
+  position: relative;
+  width: 100%;
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__input {
+    display: block;
+    position: relative;
+    @include size(100%, 64px);
+    padding: 0 64px 0 24px;
+    border: 1px solid $formBorderDefault;
+    font: 14px/157% $fontMainRegular;
+    color: $formText;
+
+    @include media('min', $tablet) {
+      @include size(100%, sizeDesktop(64));
+      padding: 0 sizeDesktop(64) 0 sizeDesktop(24);
+      font: #{sizeDesktop(16)}/137% $fontMainRegular;
+    }
+
+    @include media('min', $desktop) {
+      @include size(100%, 64px);
+      padding: 0 64px 0 24px;
+      font-size: 16px;
+    }
+
+    &:focus {
+      border-color: #659DBD;
+    }
+  }
+
+  &__options {
+    overflow-y: auto;
+    position: absolute;
+    z-index: 1500;
+    max-height: 400px;
+    display: none;
+    background: #ffffff;
+    box-shadow: 0 9px 24px -17px #aaaaaa;
+  }
+
+  &__option {
+    overflow: hidden;
+    padding: 13px 24px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font: 14px/1.5 "Ubuntu-Regular", sans-serif;
+    cursor: pointer;
+    color: $formText;
+
+    @include media('min', $tablet) {
+      padding: sizeDesktop(13) sizeDesktop(24);
+      font: #{sizeDesktop(16)}/1.2 $fontMainRegular;
+    }
+
+    @include media('min', $desktop) {
+      padding: 13px 24px;
+      font-size: 16px;
+    }
+
+    &:hover {
+      background: #EAEAEA;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 100;
+    width: 32px;
+    height: 32px;
+    transform: rotate(180deg);
+    transition: transform .2s linear;
+
+    @include media('min', $tablet) {
+      top: sizeDesktop(16);
+      right: sizeDesktop(16);
+      width: sizeDesktop(32);
+      height: sizeDesktop(32);
+    }
+
+    @include media('min', $desktop) {
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+      stroke: #EAEAEA;
+      transition: stroke .2s linear;
+    }
+  }
+
+  &__input:focus ~ &__arrow {
+    transform: rotate(0);
+
+    svg {
+      stroke: #659DBD;
+    }
+  }
+
+  &__default {
+    color: $formPlaceholder;
+  }
+}
